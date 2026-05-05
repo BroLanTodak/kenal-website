@@ -273,6 +273,35 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', system-ui, sans-serif; }
   .platform-badge {
     justify-content: center;
   }
+  .platform-badge-wrapper {
+    /* wrapper takes full grid cell */
+  }
+}
+
+/* Platform badge wrapper (for beta link below badge) */
+.platform-badge-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.beta-download-link {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #1E88E5;
+  text-decoration: none;
+  margin-top: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(30, 136, 229, 0.08);
+  border: 1px solid rgba(30, 136, 229, 0.2);
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+.beta-download-link:hover {
+  background: rgba(30, 136, 229, 0.15);
+  color: #1565C0;
 }
 
 /* Platform badges */
