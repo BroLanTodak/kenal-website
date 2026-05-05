@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KENAL — Kenali Diri Anda</title>
+  <meta name="description" content="Nombor anda menyimpan rahsia. Masukkan tarikh lahir dan temui elemen, personaliti, dan potensi kerjaya anda." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="grid-bg">
+
+  <!-- ════════════ NAV ════════════ -->
+  <nav class="nav-blue fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <img src="/images/kenal-logo-icon.png" alt="KENAL" class="h-8 w-8" />
+        <img src="/images/kenal-logo-text-white.png" alt="KENAL" class="h-5" />
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#demo" class="text-sm font-medium text-white/80 hover:text-white transition" data-i18n="nav_demo">Cuba Sekarang</a>
+        <a href="#features" class="text-sm font-medium text-white/80 hover:text-white transition" data-i18n="nav_features">Ciri-ciri</a>
+        <a href="#elements" class="text-sm font-medium text-white/80 hover:text-white transition" data-i18n="nav_elements">Elemen</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="lang-wrapper">
+          <select id="lang-selector" class="lang-selector-light" onchange="window.__setLang(this.value)">
+            <option value="ms">BM</option>
+            <option value="en">EN</option>
+            <option value="id">ID</option>
+          </select>
+          <svg class="lang-arrow text-white/60" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu flex-col gap-2 px-6 pb-4 md:hidden">
+      <a href="#demo" class="text-sm font-medium text-white/80 hover:text-white py-2" data-i18n="nav_demo">Cuba Sekarang</a>
+      <a href="#features" class="text-sm font-medium text-white/80 hover:text-white py-2" data-i18n="nav_features">Ciri-ciri</a>
+      <a href="#elements" class="text-sm font-medium text-white/80 hover:text-white py-2" data-i18n="nav_elements">Elemen</a>
+    </div>
+  </nav>
+
+
+  <!-- ════════════ SECTION 1: HERO ════════════ -->
+  <section id="hero" class="hero-bg relative flex items-center overflow-hidden py-20">
+    <div class="absolute top-20 -left-32 w-96 h-96 rounded-full bg-blue-400 opacity-10 blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-20 right-0 w-80 h-80 rounded-full bg-amber-400 opacity-10 blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-1/2 right-1/4 w-64 h-64 rounded-full bg-blue-300 opacity-5 blur-[80px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Text + CTA -->
+      <div class="hero-content">
+        <div class="inline-flex items-center gap-2 coming-badge mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+          <span data-i18n="hero_coming_soon">Akan Datang di iOS & Android</span>
+        </div>
+
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 font-display">
+          <span class="text-blue-700" data-i18n="hero_title_1">Nombor Anda</span><br />
+          <span class="text-gradient" data-i18n="hero_title_2">Menyimpan Rahsia</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-stone-500 leading-relaxed mb-8 max-w-lg" data-i18n="hero_subtitle">
+          Apa yang tarikh lahir anda dedahkan tentang personaliti, kekuatan, dan hala tuju kerjaya anda? Temui jawapannya.
+        </p>
+
+        <!-- Email CTA — above the fold -->
+        <div class="email-form-hero flex max-w-md mb-6">
+          <input type="email" id="hero-email" data-i18n="cta_email_placeholder" placeholder="Email anda" />
+          <button type="button" class="notify-btn" data-i18n="cta_notify_btn">Beritahu Saya</button>
+        </div>
+        <p class="text-xs text-stone-400 mb-8" data-i18n="hero_email_note">Kami akan maklumkan apabila app siap dilancarkan. Tiada spam.</p>
+
+        <!-- Platform badges -->
+        <div class="flex flex-wrap gap-3">
+          <!-- iOS — coming soon (disabled) -->
+          <div class="platform-badge platform-badge--disabled">
+            <div class="platform-badge-ribbon" data-i18n="hero_coming_soon_ribbon">Akan Datang</div>
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="leading-tight">
+              <span class="text-[10px] opacity-60" data-i18n="hero_badge_download">Muat turun di</span>
+              <span class="text-sm font-semibold block -mt-0.5">App Store</span>
+            </div>
+          </div>
+          <!-- Android — coming soon (disabled) -->
+          <div class="platform-badge platform-badge--disabled">
+            <div class="platform-badge-ribbon" data-i18n="hero_coming_soon_ribbon">Akan Datang</div>
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zM14.852 13.06l2.36 2.36-3.908 2.222L14.852 13.06zM17.212 8.58l-2.36 2.36-1.548-4.582 3.908 2.222zM18.364 7.997l2.387 1.356a1 1 0 0 1 0 1.742l-2.387 1.356-2.468-2.227 2.468-2.227z"/></svg>
+            <div class="leading-tight">
+              <span class="text-[10px] opacity-60" data-i18n="hero_badge_get">Dapatkan di</span>
+              <span class="text-sm font-semibold block -mt-0.5">Google Play</span>
+            </div>
+          </div>
+          <!-- Web — available now (active) -->
+          <a href="https://web.kenal.com" target="_blank" class="platform-badge platform-badge--active">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <div class="leading-tight">
+              <span class="text-[10px] opacity-80" data-i18n="hero_badge_open">Buka di</span>
+              <span class="text-sm font-semibold block -mt-0.5" data-i18n="hero_web_version">Versi Web</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Phone mockup image -->
+      <div class="hero-image flex justify-center lg:justify-end">
+        <div class="levitate">
+          <img src="/images/kenal-phone.png" alt="KENAL App" class="max-h-[500px] w-auto drop-shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ SECTION 2: MINI DEMO ════════════ -->
+  <section id="demo" class="py-20 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/50 to-transparent pointer-events-none"></div>
+
+    <div class="max-w-3xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-10 gs-reveal">
+        <span class="tag" data-i18n="demo_label">Cuba Sekarang</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-3 font-display" data-i18n="demo_title">Apa Rahsia Tarikh Lahir Anda?</h2>
+        <p class="text-stone-500" data-i18n="demo_subtitle">Masukkan tarikh lahir dan lihat nombor akar serta elemen anda dalam 2 saat.</p>
+      </div>
+
+      <!-- Demo card -->
+      <div class="demo-card glass-card p-8 md:p-10 gs-reveal">
+        <!-- iOS-style scroll wheel date picker -->
+        <div class="flex flex-col items-center gap-4 mb-8">
+          <div class="flex items-center gap-1">
+            <!-- Day wheel -->
+            <div class="wheel-container">
+              <label class="text-xs text-stone-400 mb-1 font-medium block text-center" data-i18n="demo_day">Hari</label>
+              <div class="wheel-wrapper" id="wheel-day" data-min="1" data-max="31" data-value="15"></div>
+            </div>
+            <!-- Month wheel -->
+            <div class="wheel-container">
+              <label class="text-xs text-stone-400 mb-1 font-medium block text-center" data-i18n="demo_month">Bulan</label>
+              <div class="wheel-wrapper" id="wheel-month" data-min="1" data-max="12" data-value="8"></div>
+            </div>
+            <!-- Year wheel -->
+            <div class="wheel-container wheel-container-wide">
+              <label class="text-xs text-stone-400 mb-1 font-medium block text-center" data-i18n="demo_year">Tahun</label>
+              <div class="wheel-wrapper" id="wheel-year" data-min="1940" data-max="2026" data-value="1995"></div>
+            </div>
+          </div>
+          <button id="demo-btn" class="demo-btn px-8" data-i18n="demo_btn">Dedahkan</button>
+        </div>
+
+        <!-- Result (hidden initially) -->
+        <div id="demo-result" class="hidden">
+          <div class="border-t border-stone-200 pt-8">
+            <!-- Pyramid -->
+            <div id="demo-pyramid" class="flex flex-col items-center gap-2 mb-6"></div>
+
+            <!-- Element reveal with animated canvas background -->
+            <div id="demo-element-reveal" class="element-reveal-card hidden mt-4 w-full">
+              <div class="element-card" id="demo-element-card" style="min-height:auto;">
+                <canvas style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+                <div class="card-content p-5 flex items-center gap-4" style="position:relative;z-index:10;">
+                  <div id="demo-element-badge" class="text-4xl flex-shrink-0"></div>
+                  <div class="flex-1">
+                    <h3 id="demo-element-name" class="text-xl font-bold font-display text-white"></h3>
+                    <p id="demo-element-numbers" class="text-xs text-white/60 mb-1"></p>
+                    <p id="demo-element-desc" class="text-white/80 text-sm leading-relaxed"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA after result -->
+            <div class="mt-8 pt-6 border-t border-stone-100 text-center">
+              <p class="text-stone-500 text-sm mb-4" data-i18n="demo_cta_text">Nak tahu lebih lanjut? Dapatkan analisis penuh — kerjaya, fasa kehidupan, pola personaliti.</p>
+              <div class="email-form-inline flex max-w-sm mx-auto">
+                <input type="email" id="demo-email" data-i18n="cta_email_placeholder" placeholder="Email anda" />
+                <button type="button" class="notify-btn" data-i18n="demo_cta_btn">Notify Saya</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ SECTION 3: FEATURES (compact) ════════════ -->
+  <section id="features" class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14 gs-reveal">
+        <span class="tag" data-i18n="features_label">Dalam Aplikasi</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-3 font-display" data-i18n="features_title">Lebih Daripada Sekadar Nombor</h2>
+        <p class="text-stone-500 max-w-xl mx-auto" data-i18n="features_subtitle">Gabungan numerologi, ujian personaliti, dan panduan kerjaya dalam satu platform.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Card 1: Calculator -->
+        <div class="glass-card p-7 gs-reveal">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xl mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 font-display" data-i18n="feat_calc_title">8 Modul Kalkulator</h3>
+          <p class="text-stone-500 text-sm leading-relaxed" data-i18n="feat_calc_desc">Date Dialer interaktif, piramid numerologi, analisis nama, gabungan elemen, kesan tahun dan banyak lagi.</p>
+          <div class="flex gap-2 mt-4">
+            <span class="tag" data-i18n="feat_calc_tag1">Piramid</span>
+            <span class="tag" data-i18n="feat_calc_tag2">Date Dialer</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Personality Tests -->
+        <div class="glass-card p-7 gs-reveal">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-xl mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 font-display" data-i18n="feat_test_title">Ujian Personaliti</h3>
+          <p class="text-stone-500 text-sm leading-relaxed" data-i18n="feat_test_desc">Ujian Warna (84 soalan, 7 aura warna) dan Ujian Otak Kiri/Kanan untuk profil personaliti lengkap anda.</p>
+          <div class="flex gap-1.5 mt-4">
+            <div class="w-5 h-5 rounded-full bg-red-400"></div>
+            <div class="w-5 h-5 rounded-full bg-orange-400"></div>
+            <div class="w-5 h-5 rounded-full bg-yellow-400"></div>
+            <div class="w-5 h-5 rounded-full bg-green-400"></div>
+            <div class="w-5 h-5 rounded-full bg-blue-400"></div>
+            <div class="w-5 h-5 rounded-full bg-indigo-400"></div>
+            <div class="w-5 h-5 rounded-full bg-purple-400"></div>
+          </div>
+        </div>
+
+        <!-- Card 3: Career + Life -->
+        <div class="glass-card p-7 gs-reveal">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-xl mb-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 font-display" data-i18n="feat_career_title">Kerjaya & Fasa Hidup</h3>
+          <p class="text-stone-500 text-sm leading-relaxed" data-i18n="feat_career_desc">Panduan kerjaya berasaskan elemen, 9 fasa kehidupan dengan kira detik langsung, dan peluang bisnes yang sesuai.</p>
+          <!-- Mini life meter -->
+          <div class="flex gap-0.5 items-end h-10 mt-4">
+            <div class="flex-1 bg-red-300 rounded-t" style="height:30%"></div>
+            <div class="flex-1 bg-orange-300 rounded-t" style="height:45%"></div>
+            <div class="flex-1 bg-amber-300 rounded-t" style="height:60%"></div>
+            <div class="flex-1 bg-yellow-300 rounded-t" style="height:75%"></div>
+            <div class="flex-1 bg-lime-300 rounded-t" style="height:90%"></div>
+            <div class="flex-1 bg-green-300 rounded-t" style="height:100%"></div>
+            <div class="flex-1 bg-emerald-300 rounded-t" style="height:85%"></div>
+            <div class="flex-1 bg-teal-300 rounded-t" style="height:65%"></div>
+            <div class="flex-1 bg-cyan-300 rounded-t" style="height:40%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ SECTION 4: ELEMENTS (Dark) ════════════ -->
+  <section id="elements" class="dark-section py-20 relative overflow-hidden">
+    <div class="ambient-glow w-96 h-96 bg-emerald-500 top-10 -left-32"></div>
+    <div class="ambient-glow w-72 h-72 bg-orange-500 bottom-10 right-0"></div>
+    <div class="ambient-glow w-64 h-64 bg-blue-500 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-14 gs-reveal">
+        <span class="tag bg-white/10 text-orange-300" data-i18n="elements_label">5 Elemen</span>
+        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-3 text-white font-display" data-i18n="elements_title">Elemen Mana Anda?</h2>
+        <p class="text-stone-400 max-w-xl mx-auto" data-i18n="elements_subtitle">Setiap nombor akar dikaitkan dengan elemen yang membentuk personaliti dan potensi anda.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="element-card gs-reveal" id="el-wood">
+          <canvas></canvas>
+          <div class="card-content p-5 text-center">
+            <div class="text-3xl mb-2">🌳</div>
+            <h3 class="text-lg font-bold text-white mb-0.5 font-display" data-i18n="el_wood">Kayu</h3>
+            <p class="text-emerald-300 text-xs font-medium mb-2" data-i18n="el_wood_numbers">4 & 9</p>
+            <p class="text-stone-300 text-xs leading-relaxed hidden sm:block" data-i18n="el_wood_desc">Kreatif, penyayang, berkembang seperti pokok.</p>
+          </div>
+        </div>
+
+        <div class="element-card gs-reveal" id="el-metal">
+          <canvas></canvas>
+          <div class="card-content p-5 text-center">
+            <div class="text-3xl mb-2">⚙️</div>
+            <h3 class="text-lg font-bold text-white mb-0.5 font-display" data-i18n="el_metal">Logam</h3>
+            <p class="text-gray-300 text-xs font-medium mb-2" data-i18n="el_metal_numbers">1 & 6</p>
+            <p class="text-stone-300 text-xs leading-relaxed hidden sm:block" data-i18n="el_metal_desc">Tegas, berdisiplin, pemimpin semula jadi.</p>
+          </div>
+        </div>
+
+        <div class="element-card gs-reveal" id="el-earth">
+          <canvas></canvas>
+          <div class="card-content p-5 text-center">
+            <div class="text-3xl mb-2">⛰️</div>
+            <h3 class="text-lg font-bold text-white mb-0.5 font-display" data-i18n="el_earth">Tanah</h3>
+            <p class="text-amber-300 text-xs font-medium mb-2" data-i18n="el_earth_numbers">5</p>
+            <p class="text-stone-300 text-xs leading-relaxed hidden sm:block" data-i18n="el_earth_desc">Stabil, dipercayai, penghubung semua elemen.</p>
+          </div>
+        </div>
+
+        <div class="element-card gs-reveal" id="el-fire">
+          <canvas></canvas>
+          <div class="card-content p-5 text-center">
+            <div class="text-3xl mb-2">🔥</div>
+            <h3 class="text-lg font-bold text-white mb-0.5 font-display" data-i18n="el_fire">Api</h3>
+            <p class="text-red-300 text-xs font-medium mb-2" data-i18n="el_fire_numbers">3 & 8</p>
+            <p class="text-stone-300 text-xs leading-relaxed hidden sm:block" data-i18n="el_fire_desc">Bersemangat, dinamik, penggerak perubahan.</p>
+          </div>
+        </div>
+
+        <div class="element-card gs-reveal col-span-2 sm:col-span-1" id="el-water">
+          <canvas></canvas>
+          <div class="card-content p-5 text-center">
+            <div class="text-3xl mb-2">🌊</div>
+            <h3 class="text-lg font-bold text-white mb-0.5 font-display" data-i18n="el_water">Air</h3>
+            <p class="text-blue-300 text-xs font-medium mb-2" data-i18n="el_water_numbers">2 & 7</p>
+            <p class="text-stone-300 text-xs leading-relaxed hidden sm:block" data-i18n="el_water_desc">Fleksibel, intuitif, bijaksana.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ SECTION 5: SOCIAL PROOF + FINAL CTA ════════════ -->
+  <section id="cta" class="py-20 relative">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <!-- Social proof -->
+      <div class="mb-14 gs-reveal">
+        <div class="flex flex-wrap justify-center gap-6 mb-8">
+          <div class="flex flex-col items-center">
+            <span class="text-3xl font-bold text-gradient font-display">5</span>
+            <span class="text-xs text-stone-400 mt-1" data-i18n="proof_elements">Elemen</span>
+          </div>
+          <div class="w-px h-12 bg-stone-200"></div>
+          <div class="flex flex-col items-center">
+            <span class="text-3xl font-bold text-gradient font-display">8</span>
+            <span class="text-xs text-stone-400 mt-1" data-i18n="proof_calculators">Kalkulator</span>
+          </div>
+          <div class="w-px h-12 bg-stone-200"></div>
+          <div class="flex flex-col items-center">
+            <span class="text-3xl font-bold text-gradient font-display">84</span>
+            <span class="text-xs text-stone-400 mt-1" data-i18n="proof_questions">Soalan Ujian</span>
+          </div>
+          <div class="w-px h-12 bg-stone-200"></div>
+          <div class="flex flex-col items-center">
+            <span class="text-3xl font-bold text-gradient font-display">9</span>
+            <span class="text-xs text-stone-400 mt-1" data-i18n="proof_phases">Fasa Kehidupan</span>
+          </div>
+          <div class="w-px h-12 bg-stone-200"></div>
+          <div class="flex flex-col items-center">
+            <span class="text-3xl font-bold text-gradient font-display">3</span>
+            <span class="text-xs text-stone-400 mt-1" data-i18n="proof_languages">Bahasa</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="gs-reveal">
+        <img src="/images/kenal-icon.png" alt="KENAL" class="w-16 h-16 rounded-xl mx-auto mb-6 shadow-lg shadow-orange-500/15" />
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 font-display" data-i18n="cta_title">Jangan Terlepas</h2>
+        <p class="text-stone-500 mb-8" data-i18n="cta_subtitle">Jadilah antara yang pertama mengenali diri sendiri melalui KENAL.</p>
+
+        <div class="email-form-final flex max-w-md mx-auto mb-4">
+          <input type="email" id="cta-email" data-i18n="cta_email_placeholder" placeholder="Email anda" />
+          <button type="button" class="notify-btn" data-i18n="cta_notify_btn">Beritahu Saya</button>
+        </div>
+        <p class="text-xs text-stone-400" data-i18n="hero_email_note">Kami akan maklumkan apabila app siap dilancarkan. Tiada spam.</p>
+
+        <!-- Waitlist counter -->
+        <p id="waitlist-count" class="text-sm text-stone-400 mt-6 hidden">
+          <span class="text-gradient font-semibold" id="waitlist-number">0</span>
+          <span data-i18n="cta_waitlist_joined"> orang telah mendaftar</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer class="footer-blue py-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <img src="/images/kenal-icon.png" alt="KENAL" class="w-6 h-6 rounded" />
+          <span class="text-sm font-semibold font-display text-white">KENAL</span>
+          <span class="text-blue-200 text-xs ml-1" data-i18n="footer_tagline">Kenali Diri Anda</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="https://legal.kenal.com/privacy.html" target="_blank" class="text-blue-200 text-xs hover:text-white transition" data-i18n="footer_privacy">Privasi</a>
+          <a href="https://legal.kenal.com/terms.html" target="_blank" class="text-blue-200 text-xs hover:text-white transition" data-i18n="footer_terms">Terma</a>
+        </div>
+        <p class="text-blue-200 text-xs" data-i18n="footer_copyright">© 2026 KENAL. Dibina di Malaysia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

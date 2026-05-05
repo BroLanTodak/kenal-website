@@ -1,0 +1,3 @@
+// KENAL Supabase project (personal org)
+export const SUPABASE_URL = 'https://etkuxatycjqwvfjjwxqm.supabase.co';
+export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0a3V4YXR5Y2pxd3Zmamp3eHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI5MjExMTQsImV4cCI6MjA1ODQ5NzExNH0.howZlko9y3nnJRFe_c53MVxjNvET2nXjka8OCL4mUrA';
