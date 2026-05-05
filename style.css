@@ -253,6 +253,28 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', system-ui, sans-serif; }
 .notify-btn:hover { opacity: 0.9; }
 .notify-btn:active { transform: scale(0.98); }
 
+/* Platform badges container */
+.platform-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .platform-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .platform-badge--web {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+  .platform-badge {
+    justify-content: center;
+  }
+}
+
 /* Platform badges */
 .platform-badge {
   position: relative;
