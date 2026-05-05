@@ -385,7 +385,8 @@ function initDemo() {
       badge.textContent = elInfo.emoji;
       nameEl.textContent = elInfo.name;
       descEl.textContent = descMap[result.elementType]?.[lang] || descMap[result.elementType]?.ms || '';
-      numbersEl.textContent = `Nombor Akar: ${result.rootNumber}`;
+      const rootLabel = { ms: 'Nombor Akar', en: 'Root Number', id: 'Angka Akar' };
+      numbersEl.textContent = `${rootLabel[lang] || rootLabel.ms}: ${result.rootNumber}`;
 
       // Show card and start canvas animation
       revealCard.classList.remove('hidden');
