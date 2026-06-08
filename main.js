@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initDemo();
   initNotifyForms();
+  initContactForm();
   loadWaitlistCount();
 });
 
@@ -840,4 +841,42 @@ function initMobileMenu() {
   if (!toggle || !menu) return;
   toggle.addEventListener('click', () => menu.classList.toggle('active'));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('active')));
+}
+
+// ═══════════════════════════════════
+// Contact Form — mailto via Supabase Edge Function fallback
+// ═══════════════════════════════════
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+    const btn = document.getElementById('contact-submit');
+    const status = document.getElementById('contact-status');
+
+    if (!name || !email || !message) return;
+
+    btn.disabled = true;
+    btn.textContent = t('contact_sending');
+    status.classList.add('hidden');
+
+    // Use mailto as reliable delivery
+    const subject = encodeURIComponent(`[KENAL] Mesej dari ${name}`);
+    const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:admin@kenal.com?subject=${subject}&body=${body}`;
+
+    // Show success after short delay
+    setTimeout(() => {
+      status.textContent = t('contact_success');
+      status.className = 'text-center text-sm mt-2 text-green-400';
+      status.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = t('contact_send');
+      form.reset();
+    }, 1000);
+  });
 }
