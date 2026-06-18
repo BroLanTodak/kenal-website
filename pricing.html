@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KENAL PRO — Harga & Pelan</title>
+  <meta name="description" content="Buka potensi penuh anda dengan KENAL PRO. Akses semua analisis numerologi, ujian psikometrik & kalkulator premium." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    :root { --gold: #C9A227; --gold-light: #E6C14B; }
+
+    .pr-hero {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(201,162,39,0.10), transparent 45%),
+        radial-gradient(circle at 80% 10%, rgba(249,115,22,0.08), transparent 45%);
+    }
+
+    .pr-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 999px;
+      background: linear-gradient(135deg, rgba(201,162,39,0.15), rgba(230,193,75,0.15));
+      border: 1px solid rgba(201,162,39,0.35);
+      color: var(--gold); font-weight: 700; font-size: 12px; letter-spacing: 0.06em;
+    }
+
+    /* ── Plan cards ── */
+    .plan-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .plan-grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+
+    .plan-card {
+      position: relative; display: flex; flex-direction: column;
+      background: #fff; border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 22px; padding: 28px 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .plan-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.09); }
+
+    .plan-card--pro {
+      border: 2px solid var(--gold);
+      box-shadow: 0 16px 50px rgba(201,162,39,0.18);
+      background: linear-gradient(180deg, #FFFDF6 0%, #ffffff 60%);
+    }
+    @media (min-width: 900px) { .plan-card--pro { transform: scale(1.04); } .plan-card--pro:hover { transform: scale(1.04) translateY(-4px); } }
+
+    .plan-popular {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #2a2200; font-size: 11px; font-weight: 800; letter-spacing: 0.05em;
+      padding: 5px 16px; border-radius: 999px; white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(201,162,39,0.4);
+    }
+
+    .plan-name { font-size: 18px; font-weight: 700; }
+    .plan-price { font-size: 40px; font-weight: 800; line-height: 1; }
+    .plan-period { font-size: 14px; color: var(--text-secondary); }
+    .plan-save {
+      display: inline-block; margin-left: 8px; font-size: 12px; font-weight: 700;
+      color: #15803d; background: #dcfce7; padding: 2px 10px; border-radius: 999px;
+    }
+
+    .plan-features { list-style: none; padding: 0; margin: 18px 0 0; flex: 1; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; font-size: 14px; color: #44403c; }
+    .plan-features svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; }
+    .tick { color: var(--gold); }
+    .tick-free { color: #3b82f6; }
+
+    .plan-btn {
+      margin-top: 22px; width: 100%; padding: 13px; border-radius: 14px;
+      font-weight: 700; font-size: 15px; cursor: pointer; transition: all .2s ease;
+      border: none; text-align: center; display: block;
+    }
+    .plan-btn--pro { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #2a2200; box-shadow: 0 6px 18px rgba(201,162,39,0.35); }
+    .plan-btn--pro:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    .plan-btn--free { background: #fff; color: var(--text-primary); border: 1.5px solid rgba(0,0,0,0.12); }
+    .plan-btn--free:hover { border-color: #3b82f6; color: #1d4ed8; }
+
+    /* ── Comparison table ── */
+    .cmp { width: 100%; border-collapse: collapse; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
+    .cmp th, .cmp td { padding: 14px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cmp thead th { background: rgba(201,162,39,0.08); font-weight: 700; }
+    .cmp th.col-c, .cmp td.col-c { text-align: center; width: 90px; }
+    .cmp tbody tr:last-child td { border-bottom: none; }
+    .cmp .pro-head { color: var(--gold); }
+    .cmp .ico-yes { color: var(--gold); font-weight: 800; }
+    .cmp .ico-yes-free { color: #3b82f6; font-weight: 800; }
+    .cmp .ico-no { color: #d6d3d1; }
+    .cmp tr.row-pro { background: rgba(201,162,39,0.03); }
+
+    /* ── Why upgrade ── */
+    .why-card { display: flex; gap: 14px; padding: 18px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; }
+    .why-icon { flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #fff; }
+
+    /* ── Modal ── */
+    .pr-modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .pr-modal.open { display: flex; }
+    .pr-modal-overlay { position: absolute; inset: 0; background: rgba(20,10,0,0.55); backdrop-filter: blur(4px); animation: fadeIn .2s ease; }
+    .pr-modal-card {
+      position: relative; max-width: 400px; width: 100%; background: #fff; border-radius: 22px;
+      padding: 32px 26px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,0.3);
+      animation: popIn .25s cubic-bezier(.2,.8,.3,1.2);
+    }
+    .pr-modal-icon { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 18px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex; align-items: center; justify-content: center; color: #2a2200;
+      box-shadow: 0 8px 22px rgba(201,162,39,0.4); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes popIn { from { opacity: 0; transform: scale(.9) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+  </style>
+</head>
+<body class="grid-bg">
+
+  <!-- ════════════ NAV ════════════ -->
+  <nav class="nav-blue fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5">
+        <img src="/images/kenal-logo-icon.png" alt="KENAL" class="h-8 w-8" />
+        <img src="/images/kenal-logo-text-white.png" alt="KENAL" class="h-5" />
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/#demo" class="text-sm font-medium text-white/80 hover:text-white transition" data-i18n="nav_demo">Cuba Sekarang</a>
+        <a href="/#features" class="text-sm font-medium text-white/80 hover:text-white transition" data-i18n="nav_features">Ciri-ciri</a>
+        <a href="/pricing.html" class="text-sm font-semibold text-white transition" data-i18n="pr_nav">Harga</a>
+        <a href="/#contact" class="text-sm font-medium text-white/80 hover:text-white transition" data-i18n="nav_contact">Hubungi</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="lang-wrapper">
+          <select id="lang-selector" class="lang-selector-light" onchange="window.__setLang(this.value)">
+            <option value="ms">BM</option>
+            <option value="en">EN</option>
+            <option value="id">ID</option>
+          </select>
+          <svg class="lang-arrow text-white/60" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu flex-col gap-2 px-6 pb-4 md:hidden">
+      <a href="/#demo" class="text-sm font-medium text-white/80 hover:text-white py-2" data-i18n="nav_demo">Cuba Sekarang</a>
+      <a href="/#features" class="text-sm font-medium text-white/80 hover:text-white py-2" data-i18n="nav_features">Ciri-ciri</a>
+      <a href="/pricing.html" class="text-sm font-semibold text-white py-2" data-i18n="pr_nav">Harga</a>
+      <a href="/#contact" class="text-sm font-medium text-white/80 hover:text-white py-2" data-i18n="nav_contact">Hubungi</a>
+    </div>
+  </nav>
+
+
+  <!-- ════════════ HERO + PLANS ════════════ -->
+  <section class="pr-hero pt-32 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="pr-badge mb-5">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+          <span data-i18n="pr_badge">KENAL PRO</span>
+        </span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display">
+          <span class="text-gradient" data-i18n="pr_headline">Buka Potensi Penuh Anda</span>
+        </h1>
+        <p class="text-lg text-stone-500 max-w-2xl mx-auto" data-i18n="pr_subtitle">Akses semua analisis numerologi, ujian psikometrik & kalkulator premium dengan KENAL PRO.</p>
+      </div>
+
+      <!-- Plan cards -->
+      <div class="plan-grid">
+        <!-- FREE -->
+        <div class="plan-card">
+          <div class="plan-name" data-i18n="pr_free_title">Percuma</div>
+          <p class="text-sm text-stone-400 mt-1" data-i18n="pr_free_desc">Mula kenali diri anda</p>
+          <div class="mt-5 flex items-end gap-1">
+            <span class="plan-price" data-i18n="pr_free_price">RM0</span>
+            <span class="plan-period mb-1" data-i18n="pr_free_period">selamanya</span>
+          </div>
+          <ul class="plan-features">
+            <li><svg class="tick-free" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_element">Analisis Elemen & Ulasan</span></li>
+            <li><svg class="tick-free" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_lifemeter">Life Meter & Countdown</span></li>
+            <li><svg class="tick-free" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_career">Panduan Kerjaya</span></li>
+            <li><svg class="tick-free" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_rekod">Rekod Individu & Kumpulan</span></li>
+            <li><svg class="tick-free" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_test_free">Ujian Kiri-Kanan & Bahasa Kasih</span></li>
+          </ul>
+          <a href="https://web.kenal.com" target="_blank" class="plan-btn plan-btn--free" data-i18n="pr_free_cta">Mula Percuma</a>
+        </div>
+
+        <!-- PRO YEARLY (popular) -->
+        <div class="plan-card plan-card--pro">
+          <div class="plan-popular" data-i18n="pr_best_value">Paling Berbaloi</div>
+          <div class="plan-name text-amber-700" data-i18n="pr_yearly_title">PRO Tahunan</div>
+          <p class="text-sm text-stone-400 mt-1" data-i18n="pr_yearly_desc">Nilai terbaik untuk peminat sejati</p>
+          <div class="mt-5 flex items-end gap-1 flex-wrap">
+            <span class="plan-price" data-i18n="pr_yearly_price">USD 19.99</span>
+            <span class="plan-period mb-1" data-i18n="pr_per_year">/tahun</span>
+            <span class="plan-save mb-1.5" data-i18n="pr_save">Jimat 44%</span>
+          </div>
+          <p class="text-xs text-stone-400 mt-3 font-semibold" data-i18n="pr_everything_free">Semua dalam Percuma, dan:</p>
+          <ul class="plan-features">
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_pola">Pola Tarikh Lahir Lanjutan (13 pola)</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_minda">Nombor Minda & Analisis Mendalam</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_generasi">Analisis Generasi & Fasa Hidup</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_calc">9 Kalkulator Numerologi Premium</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_test_pro">Ujian Warna, Enneagram & Big Five</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_psych_pro">4 Kategori Psikologi Lanjutan</span></li>
+          </ul>
+          <button type="button" class="plan-btn plan-btn--pro js-subscribe" data-i18n="pr_subscribe">Langgan Sekarang</button>
+        </div>
+
+        <!-- PRO MONTHLY -->
+        <div class="plan-card">
+          <div class="plan-name text-amber-700" data-i18n="pr_monthly_title">PRO Bulanan</div>
+          <p class="text-sm text-stone-400 mt-1" data-i18n="pr_monthly_desc">Fleksibel, batal bila-bila masa</p>
+          <div class="mt-5 flex items-end gap-1">
+            <span class="plan-price" data-i18n="pr_monthly_price">USD 2.99</span>
+            <span class="plan-period mb-1" data-i18n="pr_per_month">/bulan</span>
+          </div>
+          <p class="text-xs text-stone-400 mt-3 font-semibold" data-i18n="pr_everything_free">Semua dalam Percuma, dan:</p>
+          <ul class="plan-features">
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_pola">Pola Tarikh Lahir Lanjutan (13 pola)</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_minda">Nombor Minda & Analisis Mendalam</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_generasi">Analisis Generasi & Fasa Hidup</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_calc">9 Kalkulator Numerologi Premium</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_test_pro">Ujian Warna, Enneagram & Big Five</span></li>
+            <li><svg class="tick" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span data-i18n="pr_f_psych_pro">4 Kategori Psikologi Lanjutan</span></li>
+          </ul>
+          <button type="button" class="plan-btn plan-btn--pro js-subscribe" data-i18n="pr_subscribe">Langgan Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ COMPARISON TABLE ════════════ -->
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <span class="tag" data-i18n="pr_badge">KENAL PRO</span>
+        <h2 class="text-3xl font-bold mt-4 mb-2 font-display" data-i18n="pr_compare_title">Perbandingan Penuh</h2>
+        <p class="text-stone-500" data-i18n="pr_compare_sub">Lihat apa yang anda dapat dengan setiap pelan.</p>
+      </div>
+
+      <table class="cmp">
+        <thead>
+          <tr>
+            <th data-i18n="pr_col_feature">Ciri-ciri</th>
+            <th class="col-c" data-i18n="pr_col_free">Percuma</th>
+            <th class="col-c pro-head" data-i18n="pr_col_pro">PRO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-i18n="pr_f_element">Analisis Elemen & Ulasan</td><td class="col-c ico-yes-free">✓</td><td class="col-c ico-yes">✓</td></tr>
+          <tr><td data-i18n="pr_f_lifemeter">Life Meter & Countdown</td><td class="col-c ico-yes-free">✓</td><td class="col-c ico-yes">✓</td></tr>
+          <tr><td data-i18n="pr_f_career">Panduan Kerjaya</td><td class="col-c ico-yes-free">✓</td><td class="col-c ico-yes">✓</td></tr>
+          <tr><td data-i18n="pr_f_rekod">Rekod Individu & Kumpulan</td><td class="col-c ico-yes-free">✓</td><td class="col-c ico-yes">✓</td></tr>
+          <tr><td data-i18n="pr_f_test_free">Ujian Kiri-Kanan & Bahasa Kasih</td><td class="col-c ico-yes-free">✓</td><td class="col-c ico-yes">✓</td></tr>
+          <tr class="row-pro"><td data-i18n="pr_f_pola">Pola Tarikh Lahir Lanjutan (13 pola)</td><td class="col-c ico-no">—</td><td class="col-c ico-yes">✓</td></tr>
+          <tr class="row-pro"><td data-i18n="pr_f_minda">Nombor Minda & Analisis Mendalam</td><td class="col-c ico-no">—</td><td class="col-c ico-yes">✓</td></tr>
+          <tr class="row-pro"><td data-i18n="pr_f_generasi">Analisis Generasi & Fasa Hidup</td><td class="col-c ico-no">—</td><td class="col-c ico-yes">✓</td></tr>
+          <tr class="row-pro"><td data-i18n="pr_f_calc">9 Kalkulator Numerologi Premium</td><td class="col-c ico-no">—</td><td class="col-c ico-yes">✓</td></tr>
+          <tr class="row-pro"><td data-i18n="pr_f_test_pro">Ujian Warna, Enneagram & Big Five</td><td class="col-c ico-no">—</td><td class="col-c ico-yes">✓</td></tr>
+          <tr class="row-pro"><td data-i18n="pr_f_psych_pro">4 Kategori Psikologi Lanjutan</td><td class="col-c ico-no">—</td><td class="col-c ico-yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ════════════ WHY UPGRADE ════════════ -->
+  <section class="py-16 bg-gradient-to-b from-transparent via-amber-50/40 to-transparent">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold mb-2 font-display" data-i18n="pr_why_title">Kenapa Naik Taraf?</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="why-card">
+          <div class="why-icon" style="background:linear-gradient(135deg,#C9A227,#E6C14B)">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.5 6.5L22 12l-6.5 2.5L13 21l-2.5-6.5L4 12l6.5-2.5z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold mb-1" data-i18n="pr_b1_title">Kenali Diri Lebih Mendalam</h3>
+            <p class="text-sm text-stone-500 leading-relaxed" data-i18n="pr_b1_desc">Buka 13 pola tersembunyi...</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m0 13a5 5 0 01-3.536-8.536 5 5 0 017.072 0A5 5 0 0112 17z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold mb-1" data-i18n="pr_b2_title">Ujian Psikometrik Lengkap</h3>
+            <p class="text-sm text-stone-500 leading-relaxed" data-i18n="pr_b2_desc">Akses semua ujian...</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold mb-1" data-i18n="pr_b3_title">Kalkulator & Keserasian</h3>
+            <p class="text-sm text-stone-500 leading-relaxed" data-i18n="pr_b3_desc">Kira keserasian...</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background:linear-gradient(135deg,#10b981,#34d399)">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold mb-1" data-i18n="pr_b4_title">Kemas Kini Berterusan</h3>
+            <p class="text-sm text-stone-500 leading-relaxed" data-i18n="pr_b4_desc">Terima ujian baru...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════ FINAL CTA ════════════ -->
+  <section class="dark-section py-20 relative overflow-hidden">
+    <div class="ambient-glow w-96 h-96 bg-amber-500 top-0 left-1/2 -translate-x-1/2"></div>
+    <div class="max-w-2xl mx-auto px-6 text-center relative z-10">
+      <img src="/images/kenal-icon.png" alt="KENAL" class="w-16 h-16 rounded-xl mx-auto mb-6 shadow-lg shadow-amber-500/20" />
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 font-display text-white" data-i18n="pr_final_title">Sedia Buka Potensi Penuh Anda?</h2>
+      <p class="text-stone-400 mb-8" data-i18n="pr_final_sub">Naik taraf ke KENAL PRO dan temui versi diri yang sebenar.</p>
+      <button type="button" class="plan-btn plan-btn--pro js-subscribe" style="max-width:260px;margin:0 auto;" data-i18n="pr_subscribe">Langgan Sekarang</button>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer class="footer-blue py-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <img src="/images/kenal-icon.png" alt="KENAL" class="w-6 h-6 rounded" />
+          <span class="text-sm font-semibold font-display text-white">KENAL</span>
+          <span class="text-blue-200 text-xs ml-1" data-i18n="footer_tagline">Kenali Diri Anda</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="https://legal.kenal.com/privacy.html" target="_blank" class="text-blue-200 text-xs hover:text-white transition" data-i18n="footer_privacy">Privasi</a>
+          <a href="https://legal.kenal.com/terms.html" target="_blank" class="text-blue-200 text-xs hover:text-white transition" data-i18n="footer_terms">Terma</a>
+        </div>
+        <p class="text-blue-200 text-xs" data-i18n="footer_copyright">© 2026 KENAL. Dibina di Malaysia</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ════════════ COMING SOON MODAL ════════════ -->
+  <div id="pr-modal" class="pr-modal" aria-hidden="true">
+    <div class="pr-modal-overlay js-modal-close"></div>
+    <div class="pr-modal-card" role="dialog" aria-modal="true">
+      <div class="pr-modal-icon">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="text-xl font-bold mb-2 font-display" data-i18n="pr_modal_title">Akan Datang!</h3>
+      <p class="text-stone-500 text-sm leading-relaxed mb-6" data-i18n="pr_modal_msg">Langganan PRO melalui web akan tersedia tidak lama lagi.</p>
+      <a href="https://web.kenal.com" target="_blank" class="plan-btn plan-btn--pro mb-2" data-i18n="pr_modal_app">Buka Aplikasi Web</a>
+      <button type="button" class="plan-btn plan-btn--free js-modal-close" data-i18n="pr_modal_close">Tutup</button>
+    </div>
+  </div>
+
+  <script type="module" src="./pricing.js"></script>
+</body>
+</html>
