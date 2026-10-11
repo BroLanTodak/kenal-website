@@ -6,7 +6,7 @@ export const translations = {
     nav_elements: "Elemen",
 
     // Hero
-    hero_coming_soon: "Akan Datang di iOS & Android",
+    hero_coming_soon: "Kini di iOS & Android",
     hero_title_1: "Kenali Personaliti",
     hero_title_2: "Sebenar Anda",
     hero_subtitle: "Gabungan ujian psikometrik tervalidasi (Big Five, Enneagram) dengan elemen & numerologi sebagai refleksi diri — kenali personaliti, kekuatan, dan hala tuju kerjaya anda.",
@@ -158,7 +158,7 @@ export const translations = {
     nav_features: "Features",
     nav_elements: "Elements",
 
-    hero_coming_soon: "Coming Soon on iOS & Android",
+    hero_coming_soon: "Now on iOS & Android",
     hero_title_1: "Know Your",
     hero_title_2: "Real Personality",
     hero_subtitle: "Validated psychometric tests (Big Five, Enneagram) combined with elements & numerology as self-reflection — discover your personality, strengths, and career path.",
@@ -303,7 +303,7 @@ export const translations = {
     nav_features: "Fitur",
     nav_elements: "Elemen",
 
-    hero_coming_soon: "Segera Hadir di iOS & Android",
+    hero_coming_soon: "Kini di iOS & Android",
     hero_title_1: "Kenali Kepribadian",
     hero_title_2: "Sejati Anda",
     hero_subtitle: "Tes psikometrik tervalidasi (Big Five, Enneagram) dipadukan dengan elemen & numerologi sebagai refleksi diri — temukan kepribadian, kekuatan, dan arah karier Anda.",
