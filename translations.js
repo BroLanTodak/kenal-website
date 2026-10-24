@@ -36,7 +36,7 @@ export const translations = {
     demo_month: "Bulan",
     demo_year: "Tahun",
     demo_btn: "Lihat Hasil",
-    demo_cta_text: "Nak tahu lebih lanjut? Dapatkan analisis penuh — kerjaya, fasa kehidupan, pola personaliti.",
+    demo_cta_text: "Nak tahu lebih lanjut? Dapatkan analisis penuh dalam app KENAL — kerjaya, fasa kehidupan, pola personaliti.",
     demo_cta_btn: "Notify Saya",
 
     // Features
@@ -72,8 +72,8 @@ export const translations = {
     proof_languages: "Bahasa",
 
     // CTA
-    cta_title: "Jangan Terlepas",
-    cta_subtitle: "Jadilah antara yang pertama mengenali diri sendiri melalui KENAL.",
+    cta_title: "Muat Turun KENAL",
+    cta_subtitle: "Mula kenali diri anda hari ini, percuma di App Store dan Google Play.",
     cta_waitlist_joined: " orang telah mendaftar",
 
     // Contact
@@ -147,9 +147,9 @@ export const translations = {
     pr_b4_desc: "Terima ujian baru, kandungan & ciri-ciri premium yang ditambah secara berkala.",
     pr_final_title: "Sedia Buka Potensi Penuh Anda?",
     pr_final_sub: "Naik taraf ke KENAL PRO dan temui versi diri yang sebenar.",
-    pr_modal_title: "Akan Datang!",
-    pr_modal_msg: "Langganan PRO melalui web akan tersedia tidak lama lagi. Buat masa ini, anda boleh melanggan PRO terus dalam aplikasi KENAL.",
-    pr_modal_app: "Buka Aplikasi Web",
+    pr_modal_title: "Langgan dalam App",
+    pr_modal_msg: "KENAL PRO dilanggan terus dalam aplikasi KENAL melalui App Store atau Google Play. Muat turun app, kemudian pilih pelan PRO.",
+    pr_modal_app: "Muat Turun App",
     pr_modal_close: "Tutup",
   },
 
@@ -187,7 +187,7 @@ export const translations = {
     demo_month: "Month",
     demo_year: "Year",
     demo_btn: "See Result",
-    demo_cta_text: "Want to know more? Get the full analysis — career, life phases, personality patterns.",
+    demo_cta_text: "Want to know more? Get the full analysis in the KENAL app — career, life phases, personality patterns.",
     demo_cta_btn: "Notify Me",
 
     features_label: "In The App",
@@ -219,8 +219,8 @@ export const translations = {
     proof_phases: "Life Phases",
     proof_languages: "Languages",
 
-    cta_title: "Don't Miss Out",
-    cta_subtitle: "Be among the first to discover yourself through KENAL.",
+    cta_title: "Download KENAL",
+    cta_subtitle: "Start discovering yourself today, free on the App Store and Google Play.",
     cta_waitlist_joined: " people have signed up",
 
     nav_contact: "Contact",
@@ -292,9 +292,9 @@ export const translations = {
     pr_b4_desc: "Receive new tests, content & premium features added regularly.",
     pr_final_title: "Ready to Unlock Your Full Potential?",
     pr_final_sub: "Upgrade to KENAL PRO and discover the real you.",
-    pr_modal_title: "Coming Soon!",
-    pr_modal_msg: "PRO subscription via web will be available shortly. For now, you can subscribe to PRO directly in the KENAL app.",
-    pr_modal_app: "Open Web App",
+    pr_modal_title: "Subscribe in the App",
+    pr_modal_msg: "KENAL PRO is subscribed to inside the KENAL app, through the App Store or Google Play. Download the app, then choose a PRO plan.",
+    pr_modal_app: "Download the App",
     pr_modal_close: "Close",
   },
 
@@ -332,7 +332,7 @@ export const translations = {
     demo_month: "Bulan",
     demo_year: "Tahun",
     demo_btn: "Lihat Hasil",
-    demo_cta_text: "Ingin tahu lebih lanjut? Dapatkan analisis lengkap — karier, fase kehidupan, pola kepribadian.",
+    demo_cta_text: "Ingin tahu lebih lanjut? Dapatkan analisis lengkap di aplikasi KENAL — karier, fase kehidupan, pola kepribadian.",
     demo_cta_btn: "Beritahu Saya",
 
     features_label: "Dalam Aplikasi",
@@ -364,8 +364,8 @@ export const translations = {
     proof_phases: "Fase Kehidupan",
     proof_languages: "Bahasa",
 
-    cta_title: "Jangan Sampai Terlewat",
-    cta_subtitle: "Jadilah yang pertama mengenali diri sendiri melalui KENAL.",
+    cta_title: "Unduh KENAL",
+    cta_subtitle: "Mulai kenali diri Anda hari ini, gratis di App Store dan Google Play.",
     cta_waitlist_joined: " orang telah mendaftar",
 
     nav_contact: "Hubungi",
@@ -437,9 +437,9 @@ export const translations = {
     pr_b4_desc: "Terima ujian baru, konten & fitur premium yang ditambahkan secara berkala.",
     pr_final_title: "Siap Membuka Potensi Penuh Anda?",
     pr_final_sub: "Upgrade ke KENAL PRO dan temukan versi diri Anda yang sebenarnya.",
-    pr_modal_title: "Segera Hadir!",
-    pr_modal_msg: "Langganan PRO melalui web akan tersedia segera. Untuk saat ini, Anda bisa berlangganan PRO langsung di aplikasi KENAL.",
-    pr_modal_app: "Buka Aplikasi Web",
+    pr_modal_title: "Berlangganan di Aplikasi",
+    pr_modal_msg: "KENAL PRO dilanggan langsung di aplikasi KENAL melalui App Store atau Google Play. Unduh aplikasinya, lalu pilih paket PRO.",
+    pr_modal_app: "Unduh Aplikasi",
     pr_modal_close: "Tutup",
   }
 };

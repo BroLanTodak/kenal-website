@@ -526,8 +526,9 @@ async function loadWaitlistCount() {
     });
     if (res.ok) {
       const data = await res.json();
-      if (data.length > 0) {
-        document.getElementById('waitlist-number').textContent = data.length;
+      const num = document.getElementById('waitlist-number');
+      if (data.length > 0 && num) {
+        num.textContent = data.length;
         document.getElementById('waitlist-count').classList.remove('hidden');
       }
     }

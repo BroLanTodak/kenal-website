@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initI18n();
   initMobileMenu();
   initSubscribeModal();
+  initStoreLinks();
 });
 
 function initMobileMenu() {
@@ -34,4 +35,12 @@ function initSubscribeModal() {
   document.querySelectorAll('.js-subscribe').forEach(btn => btn.addEventListener('click', open));
   document.querySelectorAll('.js-modal-close').forEach(el => el.addEventListener('click', close));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+}
+
+// Send each visitor to their own store; desktop keeps the App Store link.
+function initStoreLinks() {
+  if (!/android/i.test(navigator.userAgent)) return;
+  document.querySelectorAll('.js-store-link').forEach(a => {
+    a.href = 'https://play.google.com/store/apps/details?id=com.lantodak.kenal';
+  });
 }
